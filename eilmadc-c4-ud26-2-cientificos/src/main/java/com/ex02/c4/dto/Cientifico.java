@@ -5,8 +5,11 @@ package com.ex02.c4.dto;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
@@ -91,6 +94,8 @@ public class Cientifico {
 	/**
 	 * @param asignado the asignado to set
 	 */
+	@JsonIgnore
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "Asignado")
 	public void setAsignado(List<Asignado> asignado) {
 		this.asignado = asignado;
 	}

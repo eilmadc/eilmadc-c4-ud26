@@ -1,21 +1,21 @@
-DROP DATABASE IF EXISTS ejercicio1;
-CREATE DATABASE ejercicio1;
-USE ejercicio1;
 
+DROP TABLE IF EXISTS piezas;
 CREATE TABLE piezas (
 	codigo int PRIMARY KEY NOT NULL AUTO_INCREMENT,
     nombre char(100) DEFAULT NULL
 );
 
+DROP TABLE IF EXISTS proveedores;
 CREATE TABLE proveedores (
 	id char(4) PRIMARY KEY,
     nombre char(100) DEFAULT NULL
 );
 
+DROP TABLE IF EXISTS suministra;
 CREATE TABLE suministra (
- 	id int(11) NOT NULL AUTO_INCREMENT,
-	codigo_pieza int DEFAULT NULL,
-	id_proveedor char(4) DEFAULT NULL,
+ 	id int NOT NULL AUTO_INCREMENT,
+	codigo_pieza int ,
+	id_proveedor char(4),
 	precio int,
 	PRIMARY KEY(id),
 	FOREIGN KEY (codigo_pieza) REFERENCES piezas (codigo) ON DELETE CASCADE ON UPDATE CASCADE,

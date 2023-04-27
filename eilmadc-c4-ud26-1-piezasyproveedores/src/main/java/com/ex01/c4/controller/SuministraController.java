@@ -48,21 +48,18 @@ public class SuministraController {
 	}
 
 	@PutMapping("/suministra/{id}")
-	public Suministra actualizarSuministra(@PathVariable(name = "id") int id, @RequestBody Suministra Suministra) {
+	public Suministra actualizarSuministra(@PathVariable(name = "id") int id, @RequestBody Suministra suministra) {
 
-		Suministra Suministra_seleccionado = new Suministra();
-		Suministra Suministra_actualizado = new Suministra();
+		Suministra suministra_seleccionado = new Suministra();
+		
+		suministra_seleccionado = suministraServiceImpl.suministraXID(id);
 
-		Suministra_seleccionado = suministraServiceImpl.suministraXID(id);
+		suministra_seleccionado.setPieza(suministra.getPieza());
+		suministra_seleccionado.setProveedor(suministra.getProveedor());
+		//suministra_seleccionado.setPrecio(suministra.getPrecio());
 
-		Suministra_seleccionado.setPieza(Suministra.getPieza());
-		Suministra_seleccionado.setProveedor(Suministra.getProveedor());
 
-		Suministra_actualizado = suministraServiceImpl.actualizarSuministra(Suministra_seleccionado);
-
-		System.out.println("El Suministra actualizado es: " + Suministra_actualizado);
-
-		return Suministra_actualizado;
+		return suministraServiceImpl.actualizarSuministra(suministra_seleccionado);
 	}
 
 	@DeleteMapping("/suministra/{id}")

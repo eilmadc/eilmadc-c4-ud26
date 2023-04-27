@@ -3,6 +3,7 @@
  */
 package com.ex01.c4.dto;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -32,6 +33,9 @@ public class Suministra {
 	@ManyToOne
 	@JoinColumn(name = "id_proveedor")
 	Proveedor proveedor;
+	
+	@Column(name = "precio")
+	private int precio;
 
 	// Constructores
 	public Suministra() {
@@ -43,11 +47,12 @@ public class Suministra {
 	 * @param pieza
 	 * @param proveedor
 	 */
-	public Suministra(int id, Pieza pieza, Proveedor proveedor) {
+	public Suministra(int id, Pieza pieza, Proveedor proveedor, int precio) {
 		super();
 		this.id = id;
 		this.pieza = pieza;
 		this.proveedor = proveedor;
+		this.precio = precio;
 	}
 
 	// Getters y Setters
@@ -92,6 +97,21 @@ public class Suministra {
 	 */
 	public void setProveedor(Proveedor proveedor) {
 		this.proveedor = proveedor;
+	}
+
+		
+	/**
+	 * @return the precio
+	 */
+	public int getPrecio() {
+		return precio;
+	}
+
+	/**
+	 * @param precio the precio to set
+	 */
+	public void setPrecio(int precio) {
+		this.precio = precio;
 	}
 
 	@Override

@@ -1,35 +1,31 @@
-DROP DATABASE IF EXISTS ejercicio2;
-CREATE DATABASE ejercicio2;
-
-USE ejercicio2;
 
 /* Entidad CIENTIFICOS */
-CREATE TABLE  CIENTIFICOS(
+CREATE TABLE  cientificos(
 DNI char(8) PRIMARY KEY,
 NomApels char(255)
 );
 
 /* Entidad PROYECTO */
-CREATE TABLE PROYECTO (
+CREATE TABLE proyecto (
 id char(4) PRIMARY KEY,
 Nombre char(255),
 Horas int
 );
 
 /* Entidad ASIGNADO_A */
-CREATE TABLE ASIGNADO_A (
-id int PRIMARY KEY NOT_NULL AUTO_INCREMENT,
+CREATE TABLE asignado_a (
+id int PRIMARY KEY NOT NULL AUTO_INCREMENT,
 Cientifico char(8),
 Proyecto char(50),
-FOREIGN KEY (Cientifico) REFERENCES CIENTIFICOS (DNI)
+FOREIGN KEY (Cientifico) REFERENCES cientificos (DNI)
 ON DELETE CASCADE ON UPDATE CASCADE,
-FOREIGN KEY (Proyecto) REFERENCES PROYECTO (id)
+FOREIGN KEY (Proyecto) REFERENCES proyecto (id)
 ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 /* Insercion de valores a la tabla CIENTIFICOS */
 LOCK TABLES cientificos WRITE;
-INSERT INTO CIENTIFICOS VALUES	
+INSERT INTO cientificos VALUES	
 ('111111A','Cientifico 1'),
 ('2222222B','Cientifico 2'),
 ('3333333C','Cientifico 3'),
@@ -45,7 +41,7 @@ UNLOCK TABLES;
 
 /* Insercion de valores a la tabla PROYECTO */
 LOCK TABLES proyecto WRITE;
-INSERT INTO PROYECTO VALUES	
+INSERT INTO proyecto VALUES	
 ('1','Proyecto 001', '200'),
 ('2','Proyecto 002', '3200'),
 ('3','Proyecto 003', '1500'),
@@ -61,7 +57,7 @@ UNLOCK TABLES;
 
 /* Insercion de valores a la tabla ASIGNADO_A */
 LOCK TABLES asignado_a WRITE;
-INSERT INTO ASIGNADO_A VALUES
+INSERT INTO asignado_a (cientifico, proyecto) VALUES
 ('111111A','1'),
 ('2222222B','2'),
 ('3333333C','3'),
