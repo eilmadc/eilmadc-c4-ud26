@@ -92,8 +92,7 @@ public class Equipo {
 	/**
 	 * @return the reserva
 	 */
-	@JsonIgnore
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "Reserva")
+
 	public List<Reserva> getReserva() {
 		return reserva;
 	}
@@ -101,6 +100,8 @@ public class Equipo {
 	/**
 	 * @param reserva the reserva to set
 	 */
+	@JsonIgnore
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "Reserva")
 	public void setReserva(List<Reserva> reserva) {
 		this.reserva = reserva;
 	}
