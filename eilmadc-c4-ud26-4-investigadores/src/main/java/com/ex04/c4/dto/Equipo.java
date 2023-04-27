@@ -27,7 +27,7 @@ public class Equipo {
 	// Atributos
 	@Id
 	@Column(name="numserie")
-	private String numSerie;
+	private int id;
 	@Column(name="nombre")
 	private String nombre;
 	
@@ -45,14 +45,14 @@ public class Equipo {
 	}
 
 	/**
-	 * @param numSerie
+	 * @param id
 	 * @param nombre
 	 * @param reserva
 	 * @param facultad
 	 */
-	public Equipo(String numSerie, String nombre, List<Reserva> reserva, Facultad facultad) {
+	public Equipo(int id, String nombre, List<Reserva> reserva, Facultad facultad) {
 		super();
-		this.numSerie = numSerie;
+		this.id = id;
 		this.nombre = nombre;
 		this.reserva = reserva;
 		this.facultad = facultad;
@@ -62,17 +62,17 @@ public class Equipo {
 	
 	//Getters y setters
 	/**
-	 * @return the numSerie
+	 * @return the id
 	 */
-	public String getNumSerie() {
-		return numSerie;
+	public int getId() {
+		return id;
 	}
 
 	/**
-	 * @param numSerie the numSerie to set
+	 * @param id the id to set
 	 */
-	public void setNumSerie(String numSerie) {
-		this.numSerie = numSerie;
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	/**
@@ -122,7 +122,7 @@ public class Equipo {
 
 	@Override
 	public String toString() {
-		return "Equipo [numSerie=" + numSerie + ", nombre=" + nombre + ", reserva=" + reserva + ", facultad=" + facultad
+		return "Equipo [id=" + id + ", nombre=" + nombre + ", reserva=" + reserva + ", facultad=" + facultad
 				+ "]";
 	}
 

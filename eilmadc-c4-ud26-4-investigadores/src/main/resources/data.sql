@@ -1,13 +1,14 @@
+use data;
+
 CREATE TABLE facultades (
   id int NOT NULL AUTO_INCREMENT, 
   nombre varchar(100),
   PRIMARY KEY (id)
 );
 
-
-LOCK TABLES facultades WRITE;
+LOCK TABLE facultades WRITE;
 INSERT INTO facultades (nombre) VALUES ('Facultad de filologia'), ('Facultad de matematicas'), ('Facultad de telecomunicaciones');
-UNLOCK TABLES;
+UNLOCK TABLE;
 
 CREATE TABLE investigadores (
   dni varchar(9) NOT NULL,
@@ -31,7 +32,7 @@ CREATE TABLE equipos (
   id_facultad int,
   PRIMARY KEY (id),
   FOREIGN KEY (id_facultad) REFERENCES facultades (id) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+);
 
 
 LOCK TABLES equipos WRITE;
@@ -40,8 +41,8 @@ UNLOCK TABLES;
 
 CREATE TABLE reserva (
   id int NOT NULL AUTO_INCREMENT,
-  comienzo DATETIME,
-  fin DATETIME,
+  comienzo date,
+  fin date,
   dni_investigador varchar(9),
   id_equipo int,
   PRIMARY KEY (id),
